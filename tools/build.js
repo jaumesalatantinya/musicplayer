@@ -29,7 +29,7 @@ webpack(webpackConfig).run((err, stats) => {
   console.log(`Webpack stats: ${stats}`);
 
   // if we got this far, the build succeeded.
-  console.log('Accordion vanilla js has been compiled in production mode at /dist.'.green);
+  console.log('MusicPlayer vanilla js has been compiled in production mode at /dist.'.green);
 
   return 0;
 });

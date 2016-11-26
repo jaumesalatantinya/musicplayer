@@ -1,5 +1,5 @@
 import 'babel-polyfill';
-import App from './components/App';
+import App from './App';
 
 const app = new App();
 app.init();
