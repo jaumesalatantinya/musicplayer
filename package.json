@@ -1,0 +1,70 @@
+{
+  "name": "accordion",
+  "version": "1.0.0",
+  "description": "Accordion made in vanila JS",
+  "main": "index.js",
+  "scripts": {
+    "predev": "babel-node tools/startMessage.js",
+    "dev": "npm-run-all --parallel start:dev lint:watch test:watch",
+    "start:dev": "babel-node tools/srcServer.js",
+    "lint": "node_modules/.bin/esw webpack.config.* src tools",
+    "lint:watch": "npm run lint -- --watch",
+    "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch",
+    "clean-dist": "npm run remove-dist && mkdir dist",
+    "remove-dist": "node_modules/.bin/rimraf ./dist",
+    "build:html": "babel-node tools/buildHtml.js",
+    "prebuild": "npm-run-all clean-dist test lint build:html",
+    "build": "babel-node tools/build.js",
+    "start": "npm run build && npm run start:pro",
+    "start:pro": "babel-node tools/distServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaumesalatantinya/accordion.git"
+  },
+  "author": "Jaume Sala Tantinya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaumesalatantinya/accordion/issues"
+  },
+  "homepage": "https://github.com/jaumesalatantinya/accordion#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.13.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-register": "^6.14.0",
+    "chai": "^3.5.0",
+    "cheerio": "^0.22.0",
+    "colors": "^1.1.2",
+    "compression": "^1.6.2",
+    "cross-env": "^2.0.1",
+    "css-loader": "^0.24.0",
+    "eslint": "^3.4.0",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-react": "^6.2.0",
+    "eslint-watch": "^2.1.14",
+    "eventsource-polyfill": "^0.9.6",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "jsdom": "^9.4.5",
+    "mocha": "^3.0.2",
+    "nock": "^8.0.0",
+    "node-sass": "^3.8.0",
+    "npm-run-all": "^3.1.0",
+    "open": "0.0.5",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.0.1",
+    "sinon": "^1.17.5",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.2"
+  }
+}

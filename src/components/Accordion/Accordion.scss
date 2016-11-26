@@ -1,0 +1,23 @@
+/* Accordion */
+.Accordion {
+
+    margin-bottom: 60px;
+
+    & dt.Accordion-header {
+        background-color: $lightGrey;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    & dd.Accordion-content {
+        background-color: $bgGrey;
+    }
+
+    & dd.Accordion-content.is-open {
+        display: block;
+    }
+
+    & dd.Accordion-content.is-close {
+        display: none;
+    }
+}

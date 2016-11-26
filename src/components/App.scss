@@ -1,0 +1,27 @@
+/* App Structural elements */
+body {
+    font-family: $mainFont;
+}
+
+.App {
+    width: 800px;
+    margin: auto;
+}
+
+section {
+    width: 500px;
+    margin-right: 20px;
+}
+
+aside {
+    width: 280px;
+}
+
+/* Utilities */
+.u-floatLeft {
+    float: left;
+}
+
+.u-error {
+    color: $redError;
+}
