@@ -1,7 +1,7 @@
 {
-  "name": "accordion",
+  "name": "musicplayer",
   "version": "1.0.0",
-  "description": "Accordion made in vanila JS",
+  "description": "Music player made in vanila JS",
   "main": "index.js",
   "scripts": {
     "predev": "babel-node tools/startMessage.js",
@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaumesalatantinya/accordion.git"
+    "url": "git+https://github.com/jaumesalatantinya/musicplayer.git"
   },
   "author": "Jaume Sala Tantinya",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jaumesalatantinya/accordion/issues"
+    "url": "https://github.com/jaumesalatantinya/musicplayer/issues"
   },
-  "homepage": "https://github.com/jaumesalatantinya/accordion#readme",
+  "homepage": "https://github.com/jaumesalatantinya/musicplayer#readme",
   "dependencies": {
     "babel-polyfill": "^6.13.0"
   },
