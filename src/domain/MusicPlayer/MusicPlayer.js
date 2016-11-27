@@ -9,19 +9,21 @@ import config from '../config';
 class MusicPlayer {
 
     constructor() {
-        this.state = { page: 'playlist' };
+        this.state = { page: 'playlistPage' };
         this._searchTerm = '';
         this._playListSongs = [];
-        this._musicPlayerDomElement = document.querySelector(config.get('musicPlayerDomElement'));
+        this._musicPlayerDomElement = document.querySelector('#'+config.get('musicPlayerDomElement'));
         this._currentPlayingSong;
-        this.playListComponent;
+        this._render = this.render;
+        this.playListComponent
     }
 
     render (){
+        console.log('Render from Music Player')
         if (this.state.page === 'playlistPage') {
             this.renderPlaylistPage();
         }
-        if (this.state === 'playerPage') {
+        if (this.state.page === 'playerPage') {
             this.renderPlayerPage();
         }
     }
@@ -40,17 +42,19 @@ class MusicPlayer {
             this.getPlayListItems();
         });
         this._musicPlayerDomElement.appendChild(form);
+        this._musicPlayerDomElement.appendChild(UiDomElementsFactory.createDomElement('div', {id: config.get('musicPlayerListDomElement')}));
     }
 
     getPlayListItems () {
         if (this.isValidSearchTerm()) {
             ItunesRepository.getSearchResults(this._searchTerm).then ((resp) => {
+                this._playListSongs = [];
                 resp.results.forEach( songData =>
                     this._playListSongs.push(SongFactory.createSongEntity(songData))
                 )
                 this.renderPlayList();
             }).catch((error) => {
-                    ErrorDispatcher.dispatchError('App--getSectionsFromApi: ' + error.message);
+                ErrorDispatcher.dispatchError('App--getSectionsFromApi: ' + error.message);
             });
         }
     }

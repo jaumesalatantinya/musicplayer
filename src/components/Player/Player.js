@@ -1,14 +1,14 @@
 import config from '../../domain/config';
 import UiDomElementsFactory from '../../domain/factories/UiDomElementsFactory';
 import ErrorDispatcher from '../../domain/ErrorDispacher';
-import  './MusicPlayerList.scss';
+import  './Player.scss';
 
-class MusicPlayerList {
+class Player {
 
     constructor(MusicPlayer, playListSongs) {
         this._musicPlayer = MusicPlayer;
         this._songs = playListSongs;
-        this._musicPlayerDomElement = document.querySelector('#'+config.get('musicPlayerListDomElement'));
+        this._playerDomElement = document.querySelector('#'+config.get('musicPlayerListDomElement'));
     }
 
     render () {
@@ -29,15 +29,6 @@ class MusicPlayerList {
         this._musicPlayerDomElement.appendChild(ul);
     }
 
-    addClickEventToPlayListItem(li, song) {
-        li.addEventListener('click', (e) => {
-            e.preventDefault();
-            this._musicPlayer.state.page = 'playerPage';
-            this._musicPlayer.currentPlayingSong = song;
-            this._musicPlayer._render();
-        });
-    }
-
 }
 
-export default MusicPlayerList;
+export default Player;

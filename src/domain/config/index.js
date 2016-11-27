@@ -1,6 +1,8 @@
 let base = {
     api: 'https://itunes.apple.com/search?term=',
-    musicPlayerDomElement: '#Musicplayer'
+    musicPlayerDomElement: 'Musicplayer',
+    musicPlayerListDomElement: 'MusicPlayerList',
+    playerDomElement: 'MusicPlayerPlayer'
 };
 
 class Config {

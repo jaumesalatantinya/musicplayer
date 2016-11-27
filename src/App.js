@@ -10,21 +10,9 @@ class App {
 
     init () {
         this.renderMusicPlayer();
-        /*this.getSectionsFromApi().then(() => {
-        });*/
     }
 
-    /*getSectionsFromApi () {
-        return ItunesApiService.getSearchResults('michael+jackson').then ((resp) => {
-            //this.sections.push(sections);
-                console.log(resp);
-        }).catch((error) => {
-            ErrorDispatcher.dispatchError('App--getSectionsFromApi: ' + error.message);
-        });
-    }*/
-
     renderMusicPlayer () {
-        //this.accordion.loadSections(this.sections);
         this.musicPlayer.render();
     }
 }
