@@ -10,10 +10,6 @@ class UiDomElementsFactory {
     static createText (text) {
         return document.createTextNode (text);
     }
-
-    static addEvent (element, event, cb) {
-        element.addEventListener(event, cb)
-    }
 }
 
 export default UiDomElementsFactory;

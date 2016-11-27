@@ -17,7 +17,7 @@ class Player {
         let backBtn, songTitle, songTitleText;
         backBtn = UiDomElementsFactory.createDomElement('button', {});
         backBtn.appendChild(UiDomElementsFactory.createText('Back'));
-        UiDomElementsFactory.addEvent(backBtn, 'click', (e) => {
+        backBtn.addEventListener('click', (e) => {
             e.preventDefault();
             this._musicPlayer.state.page = 'playlistPage';
             this._musicPlayer._render();
