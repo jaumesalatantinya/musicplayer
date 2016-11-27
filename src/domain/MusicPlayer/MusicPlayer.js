@@ -53,7 +53,7 @@ class MusicPlayer {
                 this._playListSongs = [];
                 resp.results.forEach( songData =>
                     this._playListSongs.push(SongFactory.createSongEntity(songData))
-                )
+                );
                 this.renderPlayList();
             }).catch((error) => {
                 ErrorDispatcher.dispatchError('App--getSectionsFromApi: ' + error.message);
