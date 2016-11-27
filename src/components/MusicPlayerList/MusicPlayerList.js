@@ -33,7 +33,7 @@ class MusicPlayerList {
         li.addEventListener('click', (e) => {
             e.preventDefault();
             this._musicPlayer.state.page = 'playerPage';
-            this._musicPlayer.currentPlayingSong = song;
+            this._musicPlayer._currentPlayingSong = song;
             this._musicPlayer._render();
         });
     }

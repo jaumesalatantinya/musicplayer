@@ -5,28 +5,28 @@ import  './Player.scss';
 
 class Player {
 
-    constructor(MusicPlayer, playListSongs) {
+    constructor(MusicPlayer, playListSongs, currentPlayingSong) {
         this._musicPlayer = MusicPlayer;
         this._songs = playListSongs;
-        this._playerDomElement = document.querySelector('#'+config.get('musicPlayerListDomElement'));
+        this._currentPlayingSong = currentPlayingSong;
+        this._musicPlayerDomElement = document.querySelector('#'+config.get('musicPlayerDomElement'));
     }
 
     render () {
         this._musicPlayerDomElement.innerHTML = '';
-        let ul, li, img, songTitle;
-        if (this._songs.length > 0) {
-            ul = UiDomElementsFactory.createDomElement('ul', {className: 'MusicPlayerList'});
-            this._songs.forEach( song => {
-                li = UiDomElementsFactory.createDomElement('li', {});
-                img = UiDomElementsFactory.createDomElement('img', {src: song.artWorkUrl});
-                songTitle = UiDomElementsFactory.createText(song.trackName + ' - ' + song.artistName);
-                this.addClickEventToPlayListItem(li, song);
-                li.appendChild(img);
-                li.appendChild(songTitle);
-                ul.appendChild(li);
-            });
-        }
-        this._musicPlayerDomElement.appendChild(ul);
+        let backBtn, songTitle, songTitleText;
+        backBtn = UiDomElementsFactory.createDomElement('button', {});
+        backBtn.appendChild(UiDomElementsFactory.createText('Back'));
+        UiDomElementsFactory.addEvent(backBtn, 'click', (e) => {
+            e.preventDefault();
+            this._musicPlayer.state.page = 'playlistPage';
+            this._musicPlayer._render();
+        });
+        songTitle = UiDomElementsFactory.createDomElement('h3', {});
+        songTitleText = `Playing => ${this._currentPlayingSong.trackName} - ${this._currentPlayingSong.artistName}`;
+        songTitle.appendChild(UiDomElementsFactory.createText(songTitleText));
+        this._musicPlayerDomElement.appendChild(backBtn);
+        this._musicPlayerDomElement.appendChild(songTitle);
     }
 
 }

@@ -1,6 +1,7 @@
 import ItunesRepository from '../itunes/ItunesRepository';
 import ErrorDispatcher from '../ErrorDispacher';
 import MusicPlayerList from '../../components/MusicPlayerList/MusicPlayerList';
+import Player from '../../components/Player/Player';
 import UiDomElementsFactory from '../factories/UiDomElementsFactory';
 import SongFactory from '../factories/SongFactory';
 import config from '../config';
@@ -15,11 +16,11 @@ class MusicPlayer {
         this._musicPlayerDomElement = document.querySelector('#'+config.get('musicPlayerDomElement'));
         this._currentPlayingSong;
         this._render = this.render;
-        this.playListComponent
+        this.playListComponent;
+        this.playerComponent;
     }
 
     render (){
-        console.log('Render from Music Player')
         if (this.state.page === 'playlistPage') {
             this.renderPlaylistPage();
         }
@@ -29,6 +30,7 @@ class MusicPlayer {
     }
 
     renderPlaylistPage () {
+        this._musicPlayerDomElement.innerHTML = '';
         let form, input, submit;
         form = UiDomElementsFactory.createDomElement('form', {className: 'MusicPlayer-SearchForm'});
         input = UiDomElementsFactory.createDomElement('input', {type: 'text', id: 'MusicPlayer-SearchForm-SearchTerm'});
@@ -69,12 +71,13 @@ class MusicPlayer {
     }
 
     renderPlayList () {
-        this._playListComponent = new MusicPlayerList(this, this._playListSongs);
-        this._playListComponent.render();
+        this.playListComponent = new MusicPlayerList(this, this._playListSongs);
+        this.playListComponent.render();
     }
 
     renderPlayerPage () {
-        console.log('renderPlayer pretty awesome');
+        this.playerComponent = new Player(this, this._playListSongs, this._currentPlayingSong);
+        this.playerComponent.render();
     }
 }
 
