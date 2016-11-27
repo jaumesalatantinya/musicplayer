@@ -1,5 +1,5 @@
 //import ErrorDispatcher from './domain/ErrorDispacher';
-import MusicPlayer from './components/MusicPlayer/MusicPlayer';
+import MusicPlayer from './domain/MusicPlayer/MusicPlayer';
 import  './styles/index.scss';
 
 class App {
