@@ -13,7 +13,7 @@ class MusicPlayerList {
 
     render () {
         this._musicPlayerDomElement.innerHTML = '';
-        let ul, li, img, songTitle;
+        let ul, li, img, songTitle, noResults, noResultsTitle;
         if (this._songs.length > 0) {
             ul = UiDomElementsFactory.createDomElement('ul', {className: 'MusicPlayerList'});
             this._songs.forEach( song => {
@@ -25,8 +25,14 @@ class MusicPlayerList {
                 li.appendChild(songTitle);
                 ul.appendChild(li);
             });
+            this._musicPlayerDomElement.appendChild(ul);
         }
-        this._musicPlayerDomElement.appendChild(ul);
+        else {
+            noResults = UiDomElementsFactory.createDomElement('h3', {});
+            noResultsTitle = UiDomElementsFactory.createText('There are no results for your query.');
+            noResults.appendChild(noResultsTitle);
+            this._musicPlayerDomElement.appendChild(noResults);
+        }
     }
 
     addClickEventToPlayListItem(li, song) {
